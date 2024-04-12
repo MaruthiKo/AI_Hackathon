@@ -1,3 +1,16 @@
+### Docker build
+
+```
+docker build --tag lamatic-image-rag --file Dockerfile .
+```
+
+### Docker run
+
+```
+docker run -dit --name lamatic-image-rag -p 8000:8000 lamatic-image-rag
+```
+
+
 ### CURL to make a post request
 
 > Note: Replace space character with `%20`
@@ -8,3 +21,4 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -d ''
 ```
+
