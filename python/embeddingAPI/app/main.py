@@ -2,9 +2,28 @@ from fastapi import FastAPI, File, UploadFile
 from typing import List
 import llm
 
-model = llm.get_embedding_model("clip")
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    #"http://localhost.tiangolo.com",
+    #"https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+model = llm.get_embedding_model("clip")
+
+#app = FastAPI()
 
 # Define your text embedding model (Example)
 class EmbeddingModel:
